@@ -1,10 +1,9 @@
-from kivy.app import App #We need to import the bits of kivy we need as we need them as importing everything would slow the app down unnecessarily
-from kivy.uix.widget import Widget #this is a thing that you want the App to display
+from kivy.app import App
+from kivy.uix.widget import Widget
 from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProperty
 from kivy.vector import Vector
 from kivy.clock import Clock
 from random import randint
-#from kivy.uix.label import Label #this will import the code for the label in which we want to display Hello World!
 
 
 class PongPaddle(Widget):
@@ -25,12 +24,8 @@ class PongBall(Widget):
 	# velocity of the ball on x and y axis
 	velocity_x = NumericProperty(0)
 	velocity_y = NumericProperty(0)
-	# referencelist property so we can use ball.velocity as
-	# a shorthand, just like e.g. w.pos for w.x and w.y
 	velocity = ReferenceListProperty(velocity_x, velocity_y)
 
-	# ``move`` function will move the ball one step. This
-	#  will be called in equal intervals to animate the ball
 	def move(self):
 		self.pos = Vector(*self.velocity) + self.pos
 
@@ -68,7 +63,6 @@ class PongGame(Widget):
 
 
 class PongApp(App):
-	#title = "Пинг Понг"
 	def build(self):
 		self.title = "Ping Pong"
 		game = PongGame()
@@ -77,5 +71,5 @@ class PongApp(App):
 		return game
 
 
-if __name__ == '__main__': #Documentation suggests that each program file should be called main.py but I think that only matters if you're creating the final App to go onto a phone or tablet we're a long way off from that yet
-	PongApp().run() #This must match the name of your App
+if __name__ == '__main__':
+	PongApp().run()
